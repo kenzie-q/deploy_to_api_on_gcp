@@ -1,0 +1,5 @@
+PROJECT_ID=project_id
+IMAGE=cloud_img:v0.0.0
+path_to_Dockerfile=project_id/Dcokerfile
+REGION=us-central1
+SERVICE_NAME=cloud-run-test
