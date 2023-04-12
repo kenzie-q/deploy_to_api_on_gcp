@@ -1,0 +1,19 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build','-t', 'gcr.io/aml-proejct-hrdc/cloud_img:v0.0.0', '--file', 'deploy_to_api_on_gcp/Dcokerfile', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/aml-proejct-hrdc/cloud_img:v0.0.0']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'cloud-run-test', '--image', 'gcr.io/aml-proejct-hrdc/cloud_img:v0.0.0', '--region', 'us-central1']
+images:
+- gcr.io/aml-proejct-hrdc/cloud_img:v0.0.0
+timeout: 3600s
+
+# PROJECT_ID: GCP project_id where the docker image is stored (registry)
+# IMAGE: the image tag, e.g., app_name:v0.0.0
+# SERVICE-NAME: create a name for the cloud run service.  Use the same one here that you use in cloud run
+# REGION: the region of the cloud run service

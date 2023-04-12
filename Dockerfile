@@ -3,8 +3,8 @@ FROM continuumio/anaconda3
 #Install requirements directly in Dockerfile
 #All env varialbes should be installed directly in Dockerfile.
 #NO API Keys should be listed.
-ENV PROJECT_ID project_id 
-ENV LOCATION location 
+ENV PROJECT_ID aml-proejct-hrdc
+ENV LOCATION us-central1 
 
 # pip install including flask app requirements
 RUN pip install --ignore-installed --force \
@@ -28,7 +28,7 @@ WORKDIR $APP_HOME
 # Copy everything from the build context into the app directory
 COPY . ./
 # Change the workdir to the project directory - need to specify directory
-WORKDIR /app/REPO_NAME
+WORKDIR /app/deploy_to_api_on_gcp
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.

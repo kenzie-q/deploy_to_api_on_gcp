@@ -1,5 +1,5 @@
-PROJECT_ID=project_id
+PROJECT_ID=aml-proejct-hrdc
 IMAGE=cloud_img:v0.0.0
-path_to_Dockerfile=project_id/Dcokerfile
+path_to_Dockerfile=deploy_to_api_on_gcp/Dockerfile
 REGION=us-central1
 SERVICE_NAME=cloud-run-test
